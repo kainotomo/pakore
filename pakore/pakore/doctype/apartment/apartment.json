@@ -1,34 +1,51 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:building_name",
- "creation": "2024-12-02 14:52:16.154748",
+ "autoname": "field:apt_name",
+ "creation": "2024-12-02 15:17:32.536499",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "building_name",
+  "apt_name",
+  "building",
   "company",
-  "section_break_ylgs",
+  "section_break_odtn",
   "enclosed_space",
-  "column_break_rjba",
+  "column_break_achi",
   "covered_verandas",
-  "column_break_nxjp",
+  "column_break_hxhw",
   "uncovered_verandas",
-  "section_break_xfsm",
+  "section_break_nuvx",
   "total"
  ],
  "fields": [
   {
-   "fieldname": "building_name",
+   "fieldname": "apt_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Building Name",
-   "no_copy": 1,
+   "label": "Apt Name",
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "section_break_ylgs",
+   "fieldname": "building",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "label": "Building",
+   "options": "Building",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "building.company",
+   "fetch_if_empty": 1,
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_odtn",
    "fieldtype": "Section Break"
   },
   {
@@ -41,7 +58,7 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_rjba",
+   "fieldname": "column_break_achi",
    "fieldtype": "Column Break"
   },
   {
@@ -54,11 +71,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_nxjp",
+   "fieldname": "column_break_hxhw",
    "fieldtype": "Column Break"
   },
   {
-   "description": "Square Meters",
    "fieldname": "uncovered_verandas",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -67,20 +83,13 @@
    "reqd": 1
   },
   {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company"
-  },
-  {
-   "fieldname": "section_break_xfsm",
+   "fieldname": "section_break_nuvx",
    "fieldtype": "Section Break"
   },
   {
    "description": "Square Meters",
    "fieldname": "total",
    "fieldtype": "Int",
-   "in_list_view": 1,
    "label": "Total",
    "non_negative": 1,
    "read_only": 1
@@ -88,10 +97,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-02 15:22:59.528032",
+ "modified": "2024-12-02 15:22:37.481114",
  "modified_by": "Administrator",
  "module": "Pakore",
- "name": "Building",
+ "name": "Apartment",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
