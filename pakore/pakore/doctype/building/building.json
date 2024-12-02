@@ -15,7 +15,8 @@
   "column_break_nxjp",
   "uncovered_verandas",
   "section_break_xfsm",
-  "total"
+  "total",
+  "common_charge"
  ],
  "fields": [
   {
@@ -84,11 +85,19 @@
    "label": "Total",
    "non_negative": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "common_charge",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Common Charge",
+   "non_negative": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-02 15:22:59.528032",
+ "modified": "2024-12-02 15:25:54.092484",
  "modified_by": "Administrator",
  "module": "Pakore",
  "name": "Building",

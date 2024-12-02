@@ -16,7 +16,8 @@
   "column_break_hxhw",
   "uncovered_verandas",
   "section_break_nuvx",
-  "total"
+  "total",
+  "common_charge"
  ],
  "fields": [
   {
@@ -93,11 +94,19 @@
    "label": "Total",
    "non_negative": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "common_charge",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Common Charge",
+   "non_negative": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-02 15:22:37.481114",
+ "modified": "2024-12-02 15:28:29.111534",
  "modified_by": "Administrator",
  "module": "Pakore",
  "name": "Apartment",
