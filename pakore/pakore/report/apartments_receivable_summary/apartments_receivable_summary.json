@@ -1,0 +1,33 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-12-02 10:52:19.961240",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"columns\":[{\"fieldname\":\"custom_apartment\",\"fieldtype\":\"Data\",\"label\":\"Apartment\",\"insert_after_index\":0,\"link_field\":{\"fieldname\":\"party\",\"names\":{}},\"doctype\":\"Customer\",\"width\":100,\"id\":\"custom_apartment\",\"name\":\"Apartment\",\"editable\":false,\"compareValue\":null},{\"label\":\"Party Type\",\"fieldname\":\"party_type\",\"fieldtype\":\"Data\",\"options\":null,\"width\":100,\"id\":\"party_type\",\"name\":\"Party Type\",\"editable\":false,\"compareValue\":null},{\"label\":\"Party\",\"fieldname\":\"party\",\"fieldtype\":\"Dynamic Link\",\"options\":\"party_type\",\"width\":180,\"id\":\"party\",\"name\":\"Party\",\"editable\":false,\"compareValue\":null},{\"label\":\"Advance Amount\",\"fieldname\":\"advance\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"advance\",\"name\":\"Advance Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Invoiced Amount\",\"fieldname\":\"invoiced\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"invoiced\",\"name\":\"Invoiced Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Paid Amount\",\"fieldname\":\"paid\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"paid\",\"name\":\"Paid Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Credit Note\",\"fieldname\":\"credit_note\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"credit_note\",\"name\":\"Credit Note\",\"editable\":false,\"compareValue\":null},{\"label\":\"Outstanding Amount\",\"fieldname\":\"outstanding\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"outstanding\",\"name\":\"Outstanding Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"0-30\",\"fieldname\":\"range1\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range1\",\"name\":\"0-30\",\"editable\":false,\"compareValue\":null},{\"label\":\"31-60\",\"fieldname\":\"range2\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range2\",\"name\":\"31-60\",\"editable\":false,\"compareValue\":null},{\"label\":\"61-90\",\"fieldname\":\"range3\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range3\",\"name\":\"61-90\",\"editable\":false,\"compareValue\":null},{\"label\":\"91-120\",\"fieldname\":\"range4\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range4\",\"name\":\"91-120\",\"editable\":false,\"compareValue\":null},{\"label\":\"121-Above\",\"fieldname\":\"range5\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range5\",\"name\":\"121-Above\",\"editable\":false,\"compareValue\":null},{\"label\":\"Total Amount Due\",\"fieldname\":\"total_due\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"total_due\",\"name\":\"Total Amount Due\",\"editable\":false,\"compareValue\":null},{\"label\":\"Territory\",\"fieldname\":\"territory\",\"fieldtype\":\"Link\",\"options\":\"Territory\",\"width\":120,\"id\":\"territory\",\"name\":\"Territory\",\"editable\":false,\"compareValue\":null},{\"label\":\"Customer Group\",\"fieldname\":\"customer_group\",\"fieldtype\":\"Link\",\"options\":\"Customer Group\",\"width\":120,\"id\":\"customer_group\",\"name\":\"Customer Group\",\"editable\":false,\"compareValue\":null},{\"label\":\"Currency\",\"fieldname\":\"currency\",\"fieldtype\":\"Link\",\"options\":\"Currency\",\"width\":80,\"id\":\"currency\",\"name\":\"Currency\",\"editable\":false,\"compareValue\":null}],\"filters\":{\"company\":\"Pakore 6\",\"report_date\":\"2024-12-02\",\"ageing_based_on\":\"Due Date\",\"range\":\"30, 60, 90, 120\",\"party\":[]}}",
+ "letter_head": "Pakore 6",
+ "letterhead": null,
+ "modified": "2024-12-02 10:54:29.529820",
+ "modified_by": "Administrator",
+ "module": "Pakore",
+ "name": "Apartments Receivable Summary",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Sales Invoice",
+ "reference_report": "Accounts Receivable Summary",
+ "report_name": "Apartments Receivable Summary",
+ "report_type": "Custom Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ],
+ "timeout": 0
+}

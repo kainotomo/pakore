@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"RF1qllYuGk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Pakore</span>\",\"col\":12}}]",
+ "content": "[{\"id\":\"RF1qllYuGk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Pakore</span>\",\"col\":12}},{\"id\":\"BSYQU74Wj_\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2024-12-02 09:37:56.004011",
  "custom_blocks": [],
  "docstatus": 0,
@@ -12,8 +12,28 @@
  "indicator_color": "",
  "is_hidden": 0,
  "label": "Pakore",
- "links": [],
- "modified": "2024-12-02 09:48:49.524721",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Apartments Receivable Summary",
+   "link_count": 0,
+   "link_to": "Apartments Receivable Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-12-02 10:47:38.679250",
  "modified_by": "Administrator",
  "module": "Pakore",
  "name": "Pakore",
