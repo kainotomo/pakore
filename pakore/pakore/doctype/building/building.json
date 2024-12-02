@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:building_name",
+ "creation": "2024-12-02 14:52:16.154748",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "building_name",
+  "column_break_mbkj",
+  "company",
+  "section_break_ylgs",
+  "enclosed_space",
+  "column_break_rjba",
+  "covered_verandas",
+  "column_break_nxjp",
+  "uncovered_verandas",
+  "section_break_xfsm",
+  "total"
+ ],
+ "fields": [
+  {
+   "fieldname": "building_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Building Name",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_ylgs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "enclosed_space",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Enclosed Space",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rjba",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "covered_verandas",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Covered Verandas",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_nxjp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uncovered_verandas",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Uncovered Verandas",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mbkj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_xfsm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total",
+   "non_negative": 1,
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-02 14:59:25.303718",
+ "modified_by": "Administrator",
+ "module": "Pakore",
+ "name": "Building",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
