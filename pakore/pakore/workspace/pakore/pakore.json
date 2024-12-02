@@ -1,6 +1,31 @@
 {
- "charts": [],
- "content": "[{\"id\":\"RF1qllYuGk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Pakore</span>\",\"col\":12}},{\"id\":\"8l5TdKC-X6\",\"type\":\"card\",\"data\":{\"card_name\":\"Billing\",\"col\":4}},{\"id\":\"q1_Lg8RyjM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}},{\"id\":\"BSYQU74Wj_\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "charts": [
+  {
+   "chart_name": "Incoming Bills (Purchase Invoice)",
+   "label": "Incoming Bills (Purchase Invoice)"
+  },
+  {
+   "chart_name": "Accounts Receivable Ageing",
+   "label": "Accounts Receivable Ageing"
+  },
+  {
+   "chart_name": "Profit and Loss",
+   "label": "Profit and Loss"
+  },
+  {
+   "chart_name": "Outgoing Bills (Sales Invoice)",
+   "label": "Outgoing Bills (Sales Invoice)"
+  },
+  {
+   "chart_name": "Accounts Payable Ageing",
+   "label": "Accounts Payable Ageing"
+  },
+  {
+   "chart_name": "Bank Balance",
+   "label": "Bank Balance"
+  }
+ ],
+ "content": "[{\"id\":\"8l5TdKC-X6\",\"type\":\"card\",\"data\":{\"card_name\":\"Billing\",\"col\":4}},{\"id\":\"q1_Lg8RyjM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}},{\"id\":\"BSYQU74Wj_\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"cL4aNskSID\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"WuJWvpUqdA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Bills\",\"col\":3}},{\"id\":\"wlajz60Wwe\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Bills\",\"col\":3}},{\"id\":\"YvBgX1X8Nr\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Payment\",\"col\":3}},{\"id\":\"IPp9uItnAA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Payment\",\"col\":3}},{\"id\":\"-npuLBHviw\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"id\":\"hUkb0uHHM-\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Incoming Bills (Purchase Invoice)\",\"col\":6}},{\"id\":\"D5DSyd4FhI\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Outgoing Bills (Sales Invoice)\",\"col\":6}},{\"id\":\"keUyrncxZd\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Receivable Ageing\",\"col\":6}},{\"id\":\"dZ5moKzEzc\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Payable Ageing\",\"col\":6}},{\"id\":\"UfkHKOt84H\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Bank Balance\",\"col\":12}}]",
  "creation": "2024-12-02 09:37:56.004011",
  "custom_blocks": [],
  "docstatus": 0,
@@ -121,11 +146,28 @@
    "type": "Link"
   }
  ],
- "modified": "2024-12-02 11:06:06.378073",
+ "modified": "2024-12-02 11:23:50.256074",
  "modified_by": "Administrator",
  "module": "Pakore",
  "name": "Pakore",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Total Incoming Bills",
+   "number_card_name": "Total Incoming Bills"
+  },
+  {
+   "label": "Total Outgoing Bills",
+   "number_card_name": "Total Outgoing Bills"
+  },
+  {
+   "label": "Total Incoming Payment",
+   "number_card_name": "Total Incoming Payment"
+  },
+  {
+   "label": "Total Outgoing Payment",
+   "number_card_name": "Total Outgoing Payment"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
