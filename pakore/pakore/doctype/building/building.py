@@ -6,4 +6,7 @@ from frappe.model.document import Document
 
 
 class Building(Document):
-	pass
+
+	def validate(self):
+		self.total = self.enclosed_space + self.covered_verandas + self.uncovered_verandas
+		pass
