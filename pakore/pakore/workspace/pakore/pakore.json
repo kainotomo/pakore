@@ -13,8 +13,8 @@
    "label": "Profit and Loss"
   },
   {
-   "chart_name": "Apartments Receivable Summary",
-   "label": "Apartments Receivable Summary"
+   "chart_name": "Accounts Receivable Summary",
+   "label": "Accounts Receivable Summary"
   },
   {
    "chart_name": "Outgoing Bills (Sales Invoice)",
@@ -29,7 +29,7 @@
    "label": "Bank Balance"
   }
  ],
- "content": "[{\"id\":\"DDRyPs7mNB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Property Management</b></span>\",\"col\":12}},{\"id\":\"WuJWvpUqdA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Bills\",\"col\":3}},{\"id\":\"wlajz60Wwe\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Bills\",\"col\":3}},{\"id\":\"YvBgX1X8Nr\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Payment\",\"col\":3}},{\"id\":\"IPp9uItnAA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Payment\",\"col\":3}},{\"id\":\"b83RaiCDhy\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Apartments Receivable Summary\",\"col\":12}},{\"id\":\"-npuLBHviw\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"id\":\"hUkb0uHHM-\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Incoming Bills (Purchase Invoice)\",\"col\":6}},{\"id\":\"D5DSyd4FhI\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Outgoing Bills (Sales Invoice)\",\"col\":6}},{\"id\":\"keUyrncxZd\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Receivable Ageing\",\"col\":6}},{\"id\":\"dZ5moKzEzc\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Payable Ageing\",\"col\":6}},{\"id\":\"UfkHKOt84H\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Bank Balance\",\"col\":12}},{\"id\":\"vKHPf7D36W\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"8l5TdKC-X6\",\"type\":\"card\",\"data\":{\"card_name\":\"Billing\",\"col\":4}},{\"id\":\"BSYQU74Wj_\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"q1_Lg8RyjM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "content": "[{\"id\":\"DDRyPs7mNB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Property Management</b></span>\",\"col\":12}},{\"id\":\"WuJWvpUqdA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Bills\",\"col\":3}},{\"id\":\"wlajz60Wwe\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Bills\",\"col\":3}},{\"id\":\"YvBgX1X8Nr\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Outgoing Payment\",\"col\":3}},{\"id\":\"IPp9uItnAA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Incoming Payment\",\"col\":3}},{\"id\":\"4fEXCXaYda\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Receivable Summary\",\"col\":12}},{\"id\":\"-npuLBHviw\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"id\":\"hUkb0uHHM-\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Incoming Bills (Purchase Invoice)\",\"col\":6}},{\"id\":\"D5DSyd4FhI\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Outgoing Bills (Sales Invoice)\",\"col\":6}},{\"id\":\"keUyrncxZd\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Receivable Ageing\",\"col\":6}},{\"id\":\"dZ5moKzEzc\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Accounts Payable Ageing\",\"col\":6}},{\"id\":\"UfkHKOt84H\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Bank Balance\",\"col\":12}},{\"id\":\"vKHPf7D36W\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"8l5TdKC-X6\",\"type\":\"card\",\"data\":{\"card_name\":\"Billing\",\"col\":4}},{\"id\":\"BSYQU74Wj_\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"q1_Lg8RyjM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
  "creation": "2024-12-02 09:37:56.004011",
  "custom_blocks": [],
  "docstatus": 0,
@@ -150,7 +150,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-12-02 11:36:31.291982",
+ "modified": "2024-12-03 09:48:10.225614",
  "modified_by": "Administrator",
  "module": "Pakore",
  "name": "Pakore",
