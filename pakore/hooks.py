@@ -30,7 +30,7 @@ app_license = "gpl-3.0"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/pakore/css/pakore.css"
-# web_include_js = "/assets/pakore/js/pakore.js"
+web_include_js = "/assets/pakore/js/pakore.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "pakore/public/scss/website"
