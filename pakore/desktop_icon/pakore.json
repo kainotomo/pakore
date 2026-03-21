@@ -1,0 +1,21 @@
+{
+ "app": "pakore",
+ "creation": "2026-01-26 11:05:19.750899",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "organization",
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Pakore",
+ "link_to": "Pakore",
+ "link_type": "Workspace Sidebar",
+ "logo_url": "/assets/pakore/images/logo_512x512.png",
+ "modified": "2026-03-21 09:22:51.110864",
+ "modified_by": "Administrator",
+ "name": "Pakore",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

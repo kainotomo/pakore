@@ -11,15 +11,15 @@ app_license = "gpl-3.0"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "pakore",
-# 		"logo": "/assets/pakore/logo.png",
-# 		"title": "Pakore",
-# 		"route": "/pakore",
+add_to_apps_screen = [
+    {
+    	"name": "pakore",
+ 	    "logo": "/assets/pakore/images/logo_512x512.png",
+		"title": "Pakore",
+		"route": "/pakore"
 # 		"has_permission": "pakore.api.permission.has_app_permission"
-# 	}
-# ]
+ 	}
+]
 
 # Includes in <head>
 # ------------------
