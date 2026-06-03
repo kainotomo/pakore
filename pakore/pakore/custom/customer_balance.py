@@ -1,7 +1,7 @@
 import frappe
 from erpnext.accounts.party import get_dashboard_info
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def get_customer_balance():
     user = frappe.session.user
     contact = frappe.get_value("Contact", {"user": user}, "name")
