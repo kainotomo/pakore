@@ -29,12 +29,6 @@ def get_columns():
 			"width": 200,
 		},
 		{
-			"label": _("Customer Name"),
-			"fieldname": "customer_name",
-			"fieldtype": "Data",
-			"width": 200,
-		},
-		{
 			"label": _("Advance Amount"),
 			"fieldname": "advance_amount",
 			"fieldtype": "Currency",
@@ -183,7 +177,6 @@ def get_data(filters):
 		data.append({
 			"apartment": details.get("custom_apartment", ""),
 			"customer": customer,
-			"customer_name": details.get("customer_name", customer),
 			"advance_amount": advance,
 			"invoiced_amount": bal["invoiced"],
 			"paid_amount": paid_excluding_advance,
