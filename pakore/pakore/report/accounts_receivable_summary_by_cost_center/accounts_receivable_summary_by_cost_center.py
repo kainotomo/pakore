@@ -165,8 +165,6 @@ def get_data(filters):
 	data = []
 	for customer, bal in customer_totals.items():
 		outstanding = bal["invoiced"] - bal["paid"] - bal["credit_note"]
-		if flt(outstanding, currency_precision) == 0:
-			continue
 
 		advance = advance_map.get(customer, 0)
 		paid_excluding_advance = bal["paid"] - advance
@@ -210,9 +208,15 @@ def get_conditions(filters):
 	if filters.get("cost_centers_include"):
 		cc_list = "', '".join(filters["cost_centers_include"])
 		conditions.append(
-			f"""AND ple.voucher_no IN (
-				SELECT parent FROM `tabSales Invoice Item`
-				WHERE cost_center IN ('{cc_list}')
+			f"""AND (
+				ple.voucher_no IN (
+					SELECT parent FROM `tabSales Invoice Item`
+					WHERE cost_center IN ('{cc_list}')
+				)
+				OR ple.against_voucher_no IN (
+					SELECT parent FROM `tabSales Invoice Item`
+					WHERE cost_center IN ('{cc_list}')
+				)
 			)"""
 		)
 
@@ -220,6 +224,10 @@ def get_conditions(filters):
 		cc_list = "', '".join(filters["cost_centers_exclude"])
 		conditions.append(
 			f"""AND ple.voucher_no NOT IN (
+				SELECT parent FROM `tabSales Invoice Item`
+				WHERE cost_center IN ('{cc_list}')
+			)
+			AND ple.against_voucher_no NOT IN (
 				SELECT parent FROM `tabSales Invoice Item`
 				WHERE cost_center IN ('{cc_list}')
 			)"""
