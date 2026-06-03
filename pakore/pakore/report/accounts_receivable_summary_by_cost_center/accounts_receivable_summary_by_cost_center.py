@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.utils import flt
+from erpnext.accounts.party import get_partywise_advanced_payment_amount
 
 
 def execute(filters=None):
@@ -68,50 +69,146 @@ def get_columns():
 
 def get_data(filters):
 	conditions = get_conditions(filters)
-	company_currency = frappe.db.get_value("Company", filters.get("company"), "default_currency")
+	company = filters.get("company")
+	report_date = filters.get("report_date")
 
-	data = frappe.db.sql(
+	# Get all receivable accounts for this company
+	receivable_accounts = frappe.db.get_all(
+		"Account",
+		filters={"company": company, "account_type": "Receivable", "is_group": 0},
+		pluck="name",
+	)
+
+	if not receivable_accounts:
+		return []
+
+	# Query Payment Ledger Entry for all customer transactions
+	ple_data = frappe.db.sql(
 		"""
 		SELECT
-			cus.custom_apartment AS apartment,
-			si.customer,
-			COALESCE(cus.customer_name, si.customer) AS customer_name,
-			SUM(si.grand_total) AS invoiced_amount,
-			SUM(si.paid_amount) AS paid_amount,
-			SUM(
-				CASE
-					WHEN si.docstatus = 1 AND si.outstanding_amount < 0
-					THEN ABS(si.outstanding_amount)
-					ELSE 0
-				END
-			) AS credit_note,
-			SUM(si.outstanding_amount) AS outstanding_amount
+			ple.party AS customer,
+			ple.voucher_type,
+			ple.voucher_no,
+			ple.against_voucher_type,
+			ple.against_voucher_no,
+			ple.amount,
+			ple.account
 		FROM
-			`tabSales Invoice` si
-		INNER JOIN
-			`tabCustomer` cus ON cus.name = si.customer
+			`tabPayment Ledger Entry` ple
 		WHERE
-			si.docstatus = 1
-			AND si.company = %(company)s
-			AND si.posting_date <= %(report_date)s
+			ple.company = %(company)s
+			AND ple.posting_date <= %(report_date)s
+			AND ple.delinked = 0
+			AND ple.party_type = 'Customer'
+			AND ple.account IN %(accounts)s
 			{conditions}
-		GROUP BY
-			si.customer
-		HAVING
-			ROUND(SUM(si.outstanding_amount), 2) != 0
 		ORDER BY
-			cus.custom_apartment ASC, si.customer ASC
+			ple.party, ple.voucher_no
 		""".format(conditions=conditions),
-		filters,
+		{
+			"company": company,
+			"report_date": report_date,
+			"accounts": receivable_accounts,
+		},
 		as_dict=1,
 	)
 
-	# Add advance amounts per customer
-	advance_map = get_advance_amounts(filters)
-	for row in data:
-		row.advance_amount = advance_map.get(row.customer, 0)
+	# Build voucher-level balances (invoiced, paid, credit_note per voucher)
+	voucher_balance = {}
+	for ple in ple_data:
+		key = (ple.account, ple.voucher_type, ple.voucher_no, ple.customer)
+		if key not in voucher_balance:
+			voucher_balance[key] = {
+				"invoiced": 0.0,
+				"paid": 0.0,
+				"credit_note": 0.0,
+			}
 
+		row = voucher_balance[key]
+		amt = ple.amount
+
+		if amt > 0:
+			if ple.voucher_type in ("Journal Entry", "Payment Entry") and ple.voucher_no != ple.against_voucher_no:
+				row["paid"] += amt
+			else:
+				row["invoiced"] += amt
+		else:
+			if ple.voucher_type in ("Sales Invoice", "Purchase Invoice"):
+				if ple.voucher_no == ple.against_voucher_no:
+					row["paid"] -= amt
+				else:
+					row["credit_note"] -= amt
+			else:
+				row["paid"] -= amt
+
+	# Aggregate per customer
+	customer_totals = {}
+	for (account, vtype, vno, customer), bal in voucher_balance.items():
+		if customer not in customer_totals:
+			customer_totals[customer] = {
+				"invoiced": 0.0,
+				"paid": 0.0,
+				"credit_note": 0.0,
+			}
+		ct = customer_totals[customer]
+		ct["invoiced"] += bal["invoiced"]
+		ct["paid"] += bal["paid"]
+		ct["credit_note"] += bal["credit_note"]
+
+	# Get advance amounts
+	advance_map = get_partywise_advanced_payment_amount(
+		["Customer"],
+		report_date,
+		filters.get("show_future_payments"),
+		company,
+	)
+
+	# Get customer details (apartment, customer_name)
+	customer_details = get_customer_details(list(customer_totals.keys()))
+
+	# Build final rows
+	currency_precision = frappe.db.get_single_value("System Settings", "currency_precision") or 2
+	data = []
+	for customer, bal in customer_totals.items():
+		outstanding = bal["invoiced"] - bal["paid"] - bal["credit_note"]
+		if flt(outstanding, currency_precision) == 0:
+			continue
+
+		advance = advance_map.get(customer, 0)
+		paid_excluding_advance = bal["paid"] - advance
+		if paid_excluding_advance < 0:
+			paid_excluding_advance = 0.0
+
+		details = customer_details.get(customer, {})
+		data.append({
+			"apartment": details.get("custom_apartment", ""),
+			"customer": customer,
+			"customer_name": details.get("customer_name", customer),
+			"advance_amount": advance,
+			"invoiced_amount": bal["invoiced"],
+			"paid_amount": paid_excluding_advance,
+			"credit_note": bal["credit_note"],
+			"outstanding_amount": outstanding,
+		})
+
+	data.sort(key=lambda r: (r["apartment"] or "", r["customer"] or ""))
 	return data
+
+
+def get_customer_details(customers):
+	"""Get apartment and customer_name for a list of customers."""
+	if not customers:
+		return {}
+	data = frappe.db.sql(
+		"""
+		SELECT name, custom_apartment, customer_name
+		FROM `tabCustomer`
+		WHERE name IN %s
+		""",
+		(customers,),
+		as_dict=1,
+	)
+	return {d.name: d for d in data}
 
 
 def get_conditions(filters):
@@ -120,7 +217,7 @@ def get_conditions(filters):
 	if filters.get("cost_centers_include"):
 		cc_list = "', '".join(filters["cost_centers_include"])
 		conditions.append(
-			f"""AND si.name IN (
+			f"""AND ple.voucher_no IN (
 				SELECT parent FROM `tabSales Invoice Item`
 				WHERE cost_center IN ('{cc_list}')
 			)"""
@@ -129,38 +226,10 @@ def get_conditions(filters):
 	if filters.get("cost_centers_exclude"):
 		cc_list = "', '".join(filters["cost_centers_exclude"])
 		conditions.append(
-			f"""AND si.name NOT IN (
+			f"""AND ple.voucher_no NOT IN (
 				SELECT parent FROM `tabSales Invoice Item`
 				WHERE cost_center IN ('{cc_list}')
 			)"""
 		)
 
 	return " ".join(conditions)
-
-
-def get_advance_amounts(filters):
-	"""Get total advance payments per customer."""
-	data = frappe.db.sql(
-		"""
-		SELECT
-			jei.party AS customer,
-			SUM(jei.credit - jei.debit) AS advance_amount
-		FROM
-			`tabJournal Entry Account` jei
-		INNER JOIN
-			`tabJournal Entry` je ON je.name = jei.parent
-		WHERE
-			je.docstatus = 1
-			AND je.posting_date <= %(report_date)s
-			AND jei.party_type = 'Customer'
-			AND jei.reference_type IS NULL
-			AND jei.is_advance = 'Yes'
-			AND je.company = %(company)s
-		GROUP BY
-			jei.party
-		""",
-		{"company": filters.get("company"), "report_date": filters.get("report_date")},
-		as_dict=1,
-	)
-
-	return {row.customer: row.advance_amount for row in data}
