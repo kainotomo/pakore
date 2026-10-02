@@ -19,6 +19,12 @@ frappe.query_reports["Accounts Receivable Summary by Cost Center"] = {
 			reqd: 1,
 		},
 		{
+			fieldname: "include_disabled_customers",
+			label: __("Include Disabled Customers"),
+			fieldtype: "Check",
+			default: 0,
+		},
+		{
 			fieldname: "cost_centers_include",
 			label: __("Cost Centers (Include)"),
 			fieldtype: "MultiSelectList",

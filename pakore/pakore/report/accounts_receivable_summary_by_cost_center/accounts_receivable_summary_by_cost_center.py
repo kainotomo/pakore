@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import flt
+from frappe.utils import cint, flt
 from erpnext.accounts.party import get_partywise_advanced_payment_amount
 
 
@@ -204,6 +204,14 @@ def get_customer_details(customers):
 
 def get_conditions(filters):
 	conditions = []
+
+	if not cint(filters.get("include_disabled_customers")):
+		conditions.append(
+			"""AND ple.party NOT IN (
+				SELECT name FROM `tabCustomer`
+				WHERE disabled = 1
+			)"""
+		)
 
 	if filters.get("cost_centers_include"):
 		cc_list = "', '".join(filters["cost_centers_include"])
