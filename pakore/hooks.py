@@ -16,7 +16,7 @@ add_to_apps_screen = [
     	"name": "pakore",
  	    "logo": "/assets/pakore/images/logo_512x512.png",
 		"title": "Pakore",
-		"route": "/pakore"
+		"route": "/desk/pakore"
 # 		"has_permission": "pakore.api.permission.has_app_permission"
  	}
 ]
